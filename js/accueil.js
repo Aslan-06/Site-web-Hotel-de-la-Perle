@@ -50,8 +50,7 @@ function bouton_choix_chambre(){
         if(window.innerWidth < 725){
             changer_forme_boutons();
             
-            conteneurPhotos.removeAttribute("style");
-            document.querySelector(".galerie_photo_principale .photo_principale").removeAttribute("style");
+            enleverPhotosSlide();
         }
 
         changer_photos(chambre_type_courant);
@@ -88,11 +87,6 @@ function changer_photos(type){
     chambre_type_courant = type;
 
     const largeurPage = window.innerWidth;
-    if(largeurPage < 725){
-        const photos = document.querySelectorAll(".galerie_photo_principale .photo_principale");
-        for(let ind = 1; ind < photos.length; ind++)
-            photos[ind].remove();
-    }
     switch(type){
         case 2 : image_blocks[0].src = chambres_double[0];
                 if(largeurPage >= 885){
@@ -119,6 +113,9 @@ function changer_photos(type){
 }
 
 const conteneurPhotos = document.querySelector(".galerie_photo_principale");
+let slider = null;
+let posXSlider;
+let limDroiteTranslate;
 function ajouterPhotosSlide(photos){
     const nbPhotos = photos.length;
     for(let ind = 1; ind < nbPhotos; ind++){
@@ -141,7 +138,71 @@ function ajouterPhotosSlide(photos){
     
     document.querySelectorAll(".galerie_photo_principale .photo_principale").forEach(divPhoto => {
         divPhoto.style.marginRight = (distanceEntreImages-10) * 100/(largeurParfaiteImg*nbPhotos + nbPhotos*(distanceEntreImages-10)) + "%";
+
+        divPhoto.addEventListener("touchmove", bouger_slide);
+        divPhoto.addEventListener("touchend", doit_pas_bouger);
     });
+
+    slider = conteneurPhotos;
+    posXSlider = 0;
+    let limDroiteTranslate;
+
+    let conteneurPoints = document.createElement("div");
+    conteneurPoints.setAttribute("class", "conteneur_slider_points");
+    for(let compteur = 1; compteur <= nbPhotos; compteur++){
+        let point = document.createElement("div");
+        point.setAttribute("class", "slider_point");
+        if(compteur === 1)
+            point.classList.add("active");
+        conteneurPoints.append(point);
+    }
+    slider.parentNode.insertBefore(conteneurPoints, document.querySelector(".affichage_prix"));
+}
+let previousTouch = null;
+let touch;
+let largeurUneSlide;
+let numSlidePrecedent = 0;
+let numSlide;
+function bouger_slide(event){
+    touch = event.touches[0];
+    
+    if(previousTouch !== undefined && previousTouch !== null){
+        event.movementX = touch.pageX - previousTouch.pageX;
+    }
+    previousTouch = touch;
+    if(event.movementX !== undefined && slider != null){
+        posXSlider += event.movementX;
+        if(posXSlider < 0 && posXSlider > limDroiteTranslate){
+            slider.style.transform = `translateX(${posXSlider}px)`;
+            updateSlideValues();
+            if(numSlide !== numSlidePrecedent){
+                document.querySelectorAll(".slider_point")[numSlide].classList.add("active");
+                document.querySelectorAll(".slider_point")[numSlidePrecedent].classList.remove("active");
+                numSlidePrecedent = numSlide;
+            }
+        }
+        else{
+            if(posXSlider > 0)
+                posXSlider = 0;
+            else if(posXSlider < limDroiteTranslate)
+                posXSlider = limDroiteTranslate;
+        }
+    }
+}
+function enleverPhotosSlide(){
+    const photos = document.querySelectorAll(".galerie_photo_principale .photo_principale");
+    for(let ind = 1; ind < photos.length; ind++)
+        photos[ind].remove();
+    conteneurPhotos.removeAttribute("style");
+    document.querySelector(".galerie_photo_principale .photo_principale").removeAttribute("style");
+    if( document.querySelector(".conteneur_slider_points"))
+        document.querySelector(".conteneur_slider_points").remove();
+    slider = null;
+}
+function updateSlideValues(){
+    limDroiteTranslate = -(parseInt(getComputedStyle(conteneurPhotos).width.match(/\d+/)[0]) - parseInt(getComputedStyle(conteneurPhotos).paddingLeft.match(/\d+/)[0]) - document.querySelector(".photo_principale").offsetWidth + 10);
+    largeurUneSlide = document.querySelector(".photo_principale").offsetWidth + parseInt(getComputedStyle(document.querySelector(".photo_principale")).marginRight.match(/\d+/)[0]) ;
+    numSlide = Math.floor((-posXSlider) / largeurUneSlide + 0.5);
 }
 
 document.querySelector(".fleche_gauche").addEventListener("click", image_precedente, false);
@@ -162,7 +223,7 @@ function image_precedente(){
         image_sequence = nb_photos_ch_double - 1;
     }
 
-    if(images_chambre_type === 2){
+    if(chambre_type_courant === 2){
         for(let ind = 0; ind < 3; ind++)
             image_blocks[ind].src = chambres_double[(image_sequence - ind) >= 0 ? image_sequence - ind : nb_photos_ch_double + (image_sequence - ind)]; // + à la fin car le (image_sequence - ind) est négative, donc en effet on a -(image_sequence - ind)
     }
@@ -171,12 +232,12 @@ function image_precedente(){
 document.querySelector(".fleche_droite").addEventListener("click", image_suivante, false);
 function image_suivante(){
     image_sequence++;
-    //if(image_sequence >= images_chambre_type === 2 ? chambres_double.length : images_chambre_type === 3 ? nb_photos_ch_triple : nb_photos_ch_quadruple){
+    //if(image_sequence >= chambre_type_courant === 2 ? nb_photos_ch_double : chambre_type_courant === 3 ? nb_photos_ch_triple : nb_photos_ch_quadruple){
     if(image_sequence >= chambres_double.length){
         image_sequence = 0;
     }
 
-    if(images_chambre_type === 2){
+    if(chambre_type_courant === 2){
         for(let ind = 0; ind < 3; ind++)
             image_blocks[ind].src = chambres_double[(image_sequence - ind) >= 0 ? image_sequence - ind : nb_photos_ch_double + (image_sequence - ind)];
     }
@@ -191,13 +252,11 @@ let carte_posX = -260;
 let carte_posY = -215;
 let bouger = false;
 
-
 ['mousemove','touchmove'].forEach( evt => 
     document.addEventListener(evt, bouger_carte, false)
 );
 //document.addEventListener("mousemove", bouger_carte);
-let previousTouch = null;
-let touch;
+
 function bouger_carte(event){
     if(bouger){
         if(event.type === "touchmove"){
@@ -243,8 +302,11 @@ function doit_bouger(){
 function doit_pas_bouger(event){
     if(bouger)
         bouger = false;
-    if(event.type === "touchend")
+    if(event.type === "touchend"){
         previousTouch = null;
+        posXSlider = Math.round(posXSlider / largeurUneSlide) * largeurUneSlide;
+        slider.style.transform = `translateX(${posXSlider}px)`;
+    }
 }
 
 
@@ -266,9 +328,7 @@ let carteEstGrande = true;
 let largeurInf885 = false;
 let slideExiste = false;
 effectuerChangements();
-window.addEventListener("resize", function(event) {
-    effectuerChangements();
-})
+window.addEventListener("resize", effectuerChangements);
 function effectuerChangements(){
     const largeurPage = window.innerWidth;
     if(carteEstGrande && largeurPage < 1195){
@@ -320,26 +380,27 @@ function effectuerChangements(){
     }
     
     if(largeurPage >= 725 && slideExiste){
-        const photos = document.querySelectorAll(".galerie_photo_principale .photo_principale");
-        for(let ind = 1; ind < photos.length; ind++)
-            photos[ind].remove();
-        
-        conteneurPhotos.removeAttribute("style");
-        document.querySelector(".galerie_photo_principale .photo_principale").removeAttribute("style");
+        enleverPhotosSlide();
 
         slideExiste = false;
-    }else if(largeurPage < 725 && !slideExiste){
-        changer_forme_boutons();
-        
-        switch(chambre_type_courant){
-            case 2: ajouterPhotosSlide(chambres_double);
-                break;
-            case 3:
-                break;
-            case 4: 
-                break;
+    }else if(largeurPage < 725){
+        updateSlideValues();
+
+        if(!slideExiste){
+            changer_forme_boutons();
+            
+            switch(chambre_type_courant){
+                case 2: ajouterPhotosSlide(chambres_double);
+                    break;
+                /*
+                case 3:
+                    break;
+                case 4: 
+                    break;
+                */
+            }
+            
+            slideExiste = true;
         }
-        
-        slideExiste = true;
     }
 }
