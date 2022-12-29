@@ -1,0 +1,892 @@
+body{
+    height: 100vh;
+    margin: 0;
+
+    color: #333333;
+    font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+}
+
+.wrapper{
+    min-height: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.container{
+    max-width: 1140px;
+    margin: 0px auto;
+}
+
+.content{
+    flex: 1 1 auto;
+}
+
+figure{
+    margin: 0px;
+    width: 100%;
+    height: 100%;
+}
+
+header{
+    height: 120px;
+    border-bottom: 2px goldenrod solid;
+    margin-bottom: 25px;
+}
+#logo_header{
+    width: 250px;
+    margin-top:8px;
+}
+
+.presentation{
+    display: flex;
+    flex-wrap: wrap;
+
+    margin-bottom: 50px;
+}
+.presentation_photos{
+    width:850px;
+    margin-right: 19px;
+    
+    display: flex;
+    flex-direction: column;
+}
+.presentation_photos_titre{
+    text-align: center;
+    
+    color: #632519;
+    margin: 0px 0px 18px 0px;
+}
+.presentation_photos_boutons{
+    height: 50px;
+
+    display: flex;
+    justify-content: center;
+}
+.conteneur_bouton{
+    width: 170px;
+}
+.conteneur_bouton:first-child, .conteneur_bouton:last-child{
+    width: 10px;
+}
+.conteneur_bouton div{
+    height: 100%;
+}
+
+.conteneur_bouton_pas_choisi{
+    background-color: #f9debd;
+}
+.bouton_pas_choisi{
+    background-color: white;
+    border-top-right-radius: 0px;
+    border-top-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+.conteneur_bouton_choisi{
+    background-color: white;
+}
+.bouton_choisi{
+    background-color: #f9debd;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+}
+.bouton_choisi button{
+    display: none;
+}
+.bouton_precedent_de_choisi{
+    border-bottom-right-radius:10px;
+}
+.bouton_suivant_de_choisi{
+    border-bottom-left-radius:10px;
+}
+.bouton_choix_chambre{
+    background-color: #B88862;
+    color: white;
+
+    display: block;
+    width: 160px;
+    height: 45px;
+    margin: 0px auto 5px auto;
+    font-size: 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.bouton_choix_chambre:hover{
+    background-color: #c19068;
+}
+.type_chambre_choisi{
+    color: #632519;
+    font-weight: bold;
+
+    display: block;
+    width: max-content;
+    height: 33px;
+    margin: 0px auto;
+    padding-top: 7px ;
+    line-height: 30px;
+
+    font-size: 20px;
+
+    border-bottom: 2px #B88862 solid;
+}
+.presentation_photos_content{
+    background-color: #f9debd;
+
+    padding: 10px;
+
+    border-radius: 10px;
+
+    display: flex;
+    flex-direction: row;
+}
+.photos_supplementaires{
+    width: 269px;
+
+    margin-right: 10px;
+}
+.image_sup_block{
+    width: 267px;
+    height: 267px;
+    margin-bottom: 10px;
+    
+    border: 1px #e1bb9a solid;
+}
+.image_sup_block:last-child{
+    margin-bottom: 0px;
+}
+.image_sup_block img{
+    opacity: 0.30;
+}
+.photo_chambre{
+    width: 100%;
+    height: 100%;
+
+    user-select: none;
+}
+.presentation_principale{
+    width: 100%;
+}
+.galerie_photo_principale{
+    display: flex;
+    flex-wrap: nowrap;
+    
+    margin-bottom: 10px;
+}
+.fleche_gauche{
+    width: 55px;
+    height: 421px;
+
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+#img_pour_fleche_gauche{
+    width: 45px;
+}
+.photo_principale{
+    width: 418px;
+    height: 417px;
+    padding: 0px 2px;
+    border-top: 2px #e1bb9a solid;
+    border-bottom: 2px #e1bb9a solid;
+}
+.fleche_droite{
+    width: 75px;
+    height:421px;
+    
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+#img_pour_fleche_droite{
+    width: 65px;
+}
+.fleche_pour_image{
+    background-color: #e1bb9a;
+    display: flex;
+}
+.fleche_pour_image:hover{
+    cursor: pointer;
+}
+.img_pour_fleche{
+    display: block;
+    margin: auto;
+    justify-content: center;
+
+    background-color: #ddbb9f;
+    
+    pointer-events: none;
+    user-select: none;
+}
+.img_pour_fleche:last-child{
+    width: 30px;
+}
+.fleche_pour_image:hover .img_pour_fleche{
+    background-color: #C8A484;
+}
+.affichage_prix{
+    background-color: #fbdaae;
+    color: #632519;
+    height: 103px;
+
+    padding: 0px 20px;
+
+    border: 7px #B8724D double;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.affichage_prix div{
+    display: flex;
+}
+.affichage_prix div p{
+    display: inline-block;
+    font-size: 28px;
+    margin: 0;
+}
+.p_occupation_type{
+    padding-right: 25px;
+}
+.p_pointilles{
+    flex: 1 0 auto;
+    height: 0px;
+    align-self: center;
+    padding-bottom: 3px;
+    border-bottom: 2px dashed #632519;
+}
+.p_prix_de_chambre{
+    padding-left: 25px;
+}
+
+.presentation_droite{
+    width:250px;
+
+    padding-left: 19px;
+    border-left: 2px gray dashed;
+
+    margin-top: 10px;
+}
+
+.liste_contact_infos{
+    margin-top: 5px;
+    margin: 5px 0px 0px 0px;
+    list-style-type: none;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    padding-left: 0px;
+}
+.liste_contact_infos li:last-child{
+    margin-top: 3px;
+}
+
+.presentation_localisation{
+    margin-top: 10px;
+}
+.titre_adresse{
+    font-weight: 500;
+    margin: 0px;
+}
+#bordure_carte{
+    width: 248px;
+    height: 358px;
+    
+    border: 1px black solid;
+    border-radius: 8px;
+}
+#conteneur_carte{
+    width: 244px;
+    height: 354px;
+
+    overflow: hidden;
+
+    border: 2px white solid;
+    border-radius: 6px;
+}
+#carte_localisation{
+    width: 700px;
+    position: relative;
+    top: -215px;
+    left: -260px;
+
+    cursor: move;
+    
+    -webkit-user-drag: none;
+
+    border-radius: 10px;
+    touch-action: none;
+}
+#google_logo{
+    width: 50px;
+    position: relative;
+    top: -548px;
+    left: 191px;
+
+    pointer-events: none;
+}
+.liste_adresse_ecrit{
+    font-weight: 600;
+    list-style-type: none;
+
+    margin: 10px 0px 5px 0px;
+    padding-left: 0px;
+}
+.liste_adresse_ecrit li:last-child{
+    margin-top: 7px;
+    margin-bottom: 0px;
+}
+.liste_itineraire{
+    margin: 15px 0px 0px 0px;
+    list-style-type: none;
+    padding-left: 0px;
+}
+.liste_itineraire li{
+    list-style-type: none;
+    margin-top: 8px;
+    padding-left: 45px;
+}
+#itineraire_bus150{
+    background: url('../img/bus150.jpg') no-repeat;
+    background-size: 30px;
+}
+#itineraire_rerB{
+    background: url('../img/rerB.png') no-repeat;
+    background-size: 40px;
+}
+#itineraire_metro12{
+    background: url('../img/metro12.png') no-repeat;
+    background-size: 40px;
+}
+
+.x3_conteneur_options{
+    position: relative;
+}
+.x3_conteneur_options::before{
+    content: "";
+    display: block;
+    width: 16px;
+    height: 22px;
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    background-color: white;
+    z-index: 1;
+}
+.x3_conteneur_options::after{
+    content: "";
+    display: block;
+    width: 16px;
+    height: 22px;
+    position: absolute;
+    bottom: -1px;
+    right: -1px;
+    background-color: white;
+    z-index: 1;
+}
+.x2_conteneur_options{
+    position: relative;
+}
+.conteneur_options{
+    margin-bottom: 50px;
+    padding: 39px 0px;
+    background: radial-gradient(#fff2e2, #ffffff);
+    border: 1px #b8724dc1 solid;
+    border-radius: 8px;
+}
+.conteneur_options::before{
+    content:"\002606";
+    font-size: 50px;
+    position: absolute;
+    top: -32px;
+    left: -9px;
+    color: #B8724D;
+    z-index: 2;
+}
+.conteneur_options::after{
+    content:"\002606";
+    font-size: 50px;
+    position: absolute;
+    bottom: -32px;
+    right: -9px;
+    transform: rotate(180deg);
+    color: #B8724D;
+    z-index: 2;
+}
+.conteneur_option{
+    display: flex;
+    margin: -29px 0px;
+    overflow: hidden;
+}
+.conteneur_option_gauche{
+    justify-content: flex-start;
+}
+.conteneur_option_droite{
+    justify-content: flex-end;
+}
+.option{
+    display: block;
+    
+    color: #632519;
+    font-weight: bold;
+
+    flex-basis: 525px;
+    margin: 8px 10px;
+    padding: 7px 13px;
+
+    border-top: 1px #b8724d9e solid;
+    border-right: 2px #b8724d9e solid;
+    border-bottom: 1px #b8724d9e solid;
+    border-left: 2px #b8724d9e solid;
+    border-radius: 5px;
+
+    z-index: 3;
+
+    transition: all 0.7s ease-in;
+}
+.conteneur_option_gauche .option{
+    background: rgb(255,237,215);
+    background: linear-gradient(90deg, rgba(255,237,215,1) 0%, rgba(255,250,244,1) 100%);
+}
+.conteneur_option_droite .option{
+    z-index: 5;
+    background: rgb(255,237,215);
+    background: linear-gradient(270deg, rgba(255,237,215,1) 0%, rgba(255,250,244,1) 100%);
+}
+.conteneur_option_gauche .option{
+    transform: translate(-101%, 0px);
+}
+.conteneur_option_droite .option{
+    transform: translate(+101%, 0px);
+}
+.option.reprendre_position{
+    transform: translate(0px, 0px);
+}
+.conteneur_option:first-child .option{
+    margin-top: 0px;
+}
+.conteneur_option:last-child .option{
+    margin-bottom: 0px;
+}
+
+.cachee{
+    display: none;
+}
+
+.galerie_hotel_titre{
+    margin: 0px;
+    color: #632519;
+    text-align: center;
+}
+.photos_hotel {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 4px;
+
+    justify-content: center;
+}
+.photos_hotel_colonne{
+    flex: 30%;
+    max-width: 30%;
+    padding: 0 4px;
+}
+.photos_hotel_colonne img {
+    margin-top: 8px;
+    vertical-align: middle;
+    width: 100%;
+}
+
+
+footer{
+    height: 60px;
+    margin-top: 50px;
+
+    border-top:2px rgb(226, 200, 135) solid;
+}
+.footer{
+    display: flex;
+}
+
+#logo_footer{
+    width: 120px;
+    margin-top: 5px;
+}
+.footer_contact_infos{
+    width: max-content;
+    height: max-content;
+    align-self: center;
+
+    margin-left: 100px;
+}
+.footer_contact_infos span:first-child{
+    margin-right: 40px;
+}
+.footer_copyright{
+    height: max-content;
+    align-self: center;
+    margin-left: auto;
+}
+
+
+@media(max-width:1195px){
+    #logo_header{
+        margin-left: 20px;
+    }
+
+    .presentation{
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+    }
+    .presentation_photos{
+        width: 100%;
+        margin-right: 0px;
+    }
+    .presentation_photos_titre{
+        font-size: 1.8em;
+    }
+    .presentation_photos_content{
+        align-self: center;
+    }
+    .presentation_droite{
+        width: max-content;
+        padding-left: 0px;
+        border: none;
+
+        display: grid;
+        grid-gap: 10px;
+        grid-template-columns: 250px 195px 240px;
+        grid-template-rows: minmax(50px, auto) 141px;
+    }
+    .presentation_localisation{
+        margin-top: 0px;
+        grid-column: 1;
+        grid-row: 1/3;
+    }
+    #google_logo{
+        top: -678px;
+    }
+    .liste_adresse_ecrit{
+        margin-top: 20px;
+        grid-column: 2;
+        grid-row: 1;
+    }
+    .liste_itineraire{
+        margin-top: 0px;
+        grid-column: 2/4;
+        grid-row: 2;
+    }
+    .liste_contact_infos{
+        margin-top: 20px;
+        padding: 3px;
+        grid-column: 3;
+        grid-row: 1;
+    }
+
+    .conteneur_options{
+        padding: 10px 0px;
+    }
+    .conteneur_option{
+        margin: -8px 0px;
+    }
+    .conteneur_option:first-child, .conteneur_option:last-child{
+        margin: 0px;
+    }
+    
+    .conteneur_options{
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+    
+    .x3_conteneur_options::before{
+        top: -2px;
+        left: 9px;
+    }
+    .x3_conteneur_options::after{
+        bottom: -2px;
+        right: 9px;
+    }
+    
+    .conteneur_options::before{
+        left: 1px;
+    }
+    .conteneur_options::after{
+        right: 1px;
+    }
+    .option{
+        flex-basis: 100%;
+    }
+    
+    .galerie_hotel_titre{
+        font-size: 1.3em;
+    }
+
+    .footer{
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
+
+@media(max-width:885px){
+    header{
+        height: 97px;
+    }
+    #logo_header{
+        width: 200px;
+    }
+    .presentation_photos{
+        padding-right: 20px;
+    }
+    .presentation_photos_titre{
+        font-size: 1.6em;
+    }
+    .presentation_photos_boutons{
+        height: 40px;
+    }
+    .bouton_choix_chambre{
+        height: 35px;
+    }
+    .type_chambre_choisi, .bouton_choix_chambre{
+        font-size: 19px;
+    }
+    .type_chambre_choisi{
+        padding-top: 4px;
+        height: 27px;
+        line-height: 25px;
+    }
+    .bouton_choix_chambre{
+        border-radius: 6px;
+    }
+    .bouton_suivant_de_choisi{
+        border-bottom-left-radius: 9px;
+    }
+    .bouton_precedent_de_choisi{
+        border-bottom-right-radius: 9px;
+    }
+
+    .presentation_photos_content{
+       width: 532px;
+       padding: 6px 10px;
+    }
+    .photos_supplementaires{
+        display: none;
+    }
+    .galerie_photo_principale{
+        margin-bottom: 6px;
+    }
+    .fleche_droite{
+        width: 55px;
+    }
+    #img_pour_fleche_droite{
+        width: 45px;
+        
+        transform: scale(-1);
+    }
+    .affichage_prix{
+        height: 80px;
+        padding: 0px 15px;
+    }
+    .affichage_prix div p{
+        font-size: 24px
+    }
+    
+    .galerie_hotel_titre{
+        font-size: 1.1em;
+    }
+    .photos_hotel_colonne {
+        flex: 80%;
+        max-width: 80%;
+    }
+
+    #logo_footer{
+        width: 100px;
+    }
+}
+
+@media(max-width:725px){
+    header{
+        text-align:center;   
+    }
+    #logo_header{
+        margin-left: 0px;
+    }
+
+    .presentation_photos_titre{
+        font-size: 1.4em;
+    }
+    .presentation_photos_boutons{
+        height: 30px;
+        margin-bottom:10px;
+        padding: 0px 5px;
+    }
+    .conteneur_bouton {
+        width: 120px;
+        height: 32px;
+        margin: 0px -2px;
+        
+        position: relative;
+    }
+    .conteneur_bouton:nth-child(3){
+        z-index:9;
+    }
+
+    .bouton_precedent_de_choisi {
+        border-bottom-right-radius: 0px;
+    }
+    .bouton_suivant_de_choisi {
+        border-bottom-left-radius: 0px;
+    }
+    .bouton_choix_chambre{
+        width: 100%;
+        height: 32px;
+        margin-bottom: 0px;
+        padding: 0px 4px;
+    }
+    .type_chambre_choisi, .bouton_choix_chambre{
+        font-size: 15px;
+    }
+    .bouton_choisi{
+        border-radius: 10% / 50%;
+        
+        position: relative;
+        z-index:10;
+    }
+    
+    .bouton_direction_gauche{
+        border-top-left-radius:10% 50%;
+        border-bottom-left-radius: 10% 50%;
+    }
+    .bouton_direction_gauche::after{
+        content:"";
+        width: 10px;
+        height: 32px;
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        
+        background-color: white;
+        border-top-left-radius:100% 49%;
+        border-bottom-left-radius: 100% 49%;
+    }
+    .bouton_direction_droite{
+        border-top-right-radius:10% 49%;
+        border-bottom-right-radius: 10% 49%;
+    }
+    .bouton_direction_droite::before{
+        content:"";
+        width: 10px;
+        height: 32px;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        
+        background-color: white;
+        border-top-right-radius:100% 50%;
+        border-bottom-right-radius: 100% 50%;
+    }
+    
+    .type_chambre_choisi{
+        height: 22px;
+        line-height: 23px;
+        
+        border-bottom: 0;
+    }
+    
+    .conteneur_bouton:first-child, .conteneur_bouton:last-child, .fleche_pour_image{
+        display:none;
+    }
+    .galerie_photo_principale{
+        width: auto;
+        overflow: hidden;
+        justify-content: space-evenly;
+    }
+    
+    .photo_principale{
+        width: 80%;
+        height: auto;
+        padding: 0px;
+        border: 0;
+    }
+    .affichage_prix{
+        height: 60px;
+        padding: 0px 10px;
+    }
+    .affichage_prix div p {
+        font-size: 20px;
+    }
+    
+    .presentation_droite{
+        width:100%;
+        padding-left: 10px;
+        padding-right: 10px;
+        
+        display: flex;
+        flex-direction: column;
+        grid-gap: 0px;
+    }
+    .liste_contact_infos{
+        margin-bottom: 10px;
+    }
+    .presentation_localisation{
+        display: flex;
+        flex-direction: column;
+        
+        padding-right: 20px;
+    }
+    .titre_adresse{
+        margin-bottom: 3px
+    }
+    #bordure_carte{
+        align-self: center;
+    }
+    .liste_adresse_ecrit {
+        margin-top: 10px;
+    }
+    .liste_itineraire{
+        padding-right: 20px;
+    }
+}
+
+@media(max-width:572px){
+    .presentation_photos_titre{
+        font-size: 1.3em;
+    }
+    .presentation_photos_content{
+        width: 80%;
+    }
+    
+    .affichage_prix{
+        height: 55px;
+    }
+    .affichage_prix div p {
+        font-size: 18px;
+    }
+}
+
+@media(max-width:384px){
+    .presentation_photos_titre{
+        font-size: 1.2em;
+    }
+    .conteneur_bouton {
+        width: 33%;
+    }
+    .bouton_direction_gauche::after{
+        width: 10%;
+    }
+    .bouton_direction_droite::before{
+        width: 10%;
+    }
+
+    .presentation_photos_content{
+        width: 90%;
+    }
+    
+    .affichage_prix{
+        height: 50px;
+    }
+    .affichage_prix div p {
+        font-size: 16px;
+    }
+}

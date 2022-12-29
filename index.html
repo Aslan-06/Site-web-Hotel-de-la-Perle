@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <title>Hôtel La Perle de La Courneuve</title>
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="icon" href="img/perle.png">
+    </head>
+    <body>
+        <div class="wrapper">
+            <header>
+                <div class="container">
+                    <a href="index.html">
+                        <img id="logo_header" src="img/logo.png">
+                    </a>
+                </div>
+            </header>
+
+            <div class="content">
+                <div class="container">
+                    <div class="presentation">
+                        <div class="presentation_photos">
+                            <h1 class="presentation_photos_titre">
+                                Les types des chambres et leurs prix
+                            </h1>
+                
+                            <div class="presentation_photos_boutons">
+                                <div class="conteneur_bouton conteneur_bouton_pas_choisi">
+                                    <div class="bouton_pas_choisi bouton_precedent_de_choisi">
+                                    </div>
+                                </div>
+                
+                                <div class="conteneur_bouton conteneur_bouton_choisi conteneur_bouton_2">
+                                    <div class="bouton_choisi">
+                                        <button id="bouton_chambre_double" class="bouton_choix_chambre">
+                                            Double
+                                        </button>
+                                        <p class="type_chambre_choisi">
+                                            Double
+                                        </p>
+                                    </div>
+                                </div>
+                
+                                <div class="conteneur_bouton conteneur_bouton_pas_choisi conteneur_bouton_3">
+                                    <div class="bouton_pas_choisi bouton_suivant_de_choisi">
+                                        <button id="bouton_chambre_triple" class="bouton_choix_chambre">
+                                            Triple
+                                        </button>
+                                        <p class="type_chambre_choisi cachee">
+                                            Triple
+                                        </p>
+                                    </div>
+                                </div>
+                
+                                <div class="conteneur_bouton conteneur_bouton_pas_choisi conteneur_bouton_4">
+                                    <div class="bouton_pas_choisi">
+                                        <button id="bouton_chambre_quadruple" class="bouton_choix_chambre">
+                                            Quadruple
+                                        </button>
+                                        <p class="type_chambre_choisi cachee">
+                                            Quadruple
+                                        </p>
+                                    </div>
+                                </div>
+                
+                                <div class="conteneur_bouton conteneur_bouton_pas_choisi">
+                                    <div class="bouton_pas_choisi">
+                                    </div>
+                                </div>
+                            </div>
+                
+                            <div class="presentation_photos_content">
+                                <div class="photos_supplementaires">
+                                    <div class="image_sup_block">
+                                        <figure>
+                                            <img src="img/chambre_double_6.jpg" class="photo_chambre" id="photo_chambre_2">
+                                        </figure>
+                                    </div>
+                
+                                    <div class="image_sup_block">
+                                        <figure>
+                                            <img src="img/chambre_double_5.jpg" class="photo_chambre" id="photo_chambre_3">
+                                        </figure>
+                                    </div>
+                                </div>
+                
+                                <div class="presentation_principale">
+                                    <div class="galerie_photo_principale">
+                                        <div class="fleche_gauche fleche_pour_image">
+                                           <img id="img_pour_fleche_gauche" class="img_pour_fleche" src="img/fleche_gauche.png">
+                                        </div>
+                
+                                        <div class="photo_principale">
+                                            <figure>
+                                                <img src="img/chambre_double_1.jpg" class="photo_chambre" id="photo_chambre_1">
+                                            </figure>
+                                        </div>
+                
+                                        <div class="fleche_droite fleche_pour_image">
+                                            <img id="img_pour_fleche_droite" class="img_pour_fleche" src="img/fleche_droite.png">
+                                        </div>
+                                    </div>
+                
+                                    <div class="affichage_prix">
+                                        <div>
+                                            <p class="p_occupation_type">
+                                                Occupation single
+                                            </p>
+                                            <p class="p_pointilles">
+                                            </p>
+                                            <p class="p_prix_de_chambre">
+                                                60&#8364
+                                            </p>
+                                        </div>
+                
+                                        <div>
+                                            <p class="p_occupation_type">
+                                                Occupation double
+                                            </p>
+                                            <p class="p_pointilles">
+                                            </p>
+                                            <p class="p_prix_de_chambre">
+                                                70&#8364
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                
+                        <div class="presentation_droite">
+                            <ul class="liste_contact_infos">
+                                <li>Tél : 09 81 61 27 26</li>
+                                <li>E-mail : residencelaperle@free.fr</li>
+                            </ul>
+                
+                            <div class="presentation_localisation">
+                                <h4 class="titre_adresse">
+                                    Adresse :
+                                </h4>
+                
+                                <div id="bordure_carte">
+                                    <div id="conteneur_carte">
+                                        <img id="carte_localisation" src="img/google_carte.jpg">
+                                        <img id="google_logo" src="img/googlelogo.png">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <ul class="liste_adresse_ecrit">
+                                <li>3 rue Boulevard Pasteur</li>
+                                <li>93120, La Courneuve</li>
+                            </ul>
+                
+                            <ul class="liste_itineraire">
+                                <li id="itineraire_bus150"><strong>Crèvecoeur</strong> - 1 minute à pied de l'Hôtel</li>
+                                <li id="itineraire_rerB"><strong>La Courneuve - Aubervilliers</strong> (diréction Aéroport Charles de Gaulle) - 5 minutes à pied de l'Hôtel</li>
+                                <li id="itineraire_metro12"><strong>Mairie d'Aubervilliers</strong> - 5 minutes à pied de l'Hôtel</li>
+                            </ul>
+                        </div>  
+                    </div>
+                
+                    <div class="x3_conteneur_options">
+                        <div class="x2_conteneur_options">
+                            <div class="conteneur_options">
+                                <div class="conteneur_option conteneur_option_droite">
+                                    <p class="option">
+                                        Wifi et Télévision gratuits à utiliser
+                                    <p>
+                                </div>
+                                <div class="conteneur_option conteneur_option_gauche">
+                                    <p class="option">
+                                        Mini cuisine commune, avec un four à micro-ondes
+                                    <p>
+                                </div>
+                                <div class="conteneur_option conteneur_option_droite">
+                                    <p class="option">
+                                        Une lavérie à côté de l'hôtel
+                                    <p>
+                                </div>
+                                <div class="conteneur_option conteneur_option_gauche">
+                                    <p class="option">
+                                        Multiple réstaurants et épiceries à côté
+                                    <p>
+                                </div>
+                                <div class="conteneur_option conteneur_option_droite">
+                                    <p class="option">
+                                        Une boulangerie en face de l'hôtel
+                                    <p>
+                                </div>
+                                <div class="conteneur_option conteneur_option_gauche">
+                                    <p class="option">
+                                        Situé dans un lieu très vivant
+                                    <p>
+                                </div>
+                                <div class="conteneur_option conteneur_option_droite">
+                                    <p class="option">
+                                        Café à 1 euro et 50 centimes
+                                    <p>
+                                </div>
+                                <div class="conteneur_option conteneur_option_gauche">
+                                    <p class="option">
+                                        Petit déjeuner à 8 euros
+                                    <p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="galerie_hotel">
+                        <h2 class="galerie_hotel_titre">Galerie de l'hôtel</h2>
+                        <div class="photos_hotel">
+                            <div class="photos_hotel_colonne">
+                                <a href="img/photo_hotel1.jpg" target="_blank"><img src="img/photo_hotel1.jpg"></a>
+                                <a href="img/photo_hotel5.jpg" target="_blank"><img src="img/photo_hotel5.jpg"></a>
+                            </div>
+                            <div class="photos_hotel_colonne">
+                                <a href="img/photo_hotel2.jpg" target="_blank"><img src="img/photo_hotel2.jpg"></a>
+                                <a href="img/photo_hotel4.jpg" target="_blank"><img src="img/photo_hotel4.jpg"></a>
+                            </div>
+                            <div class="photos_hotel_colonne">
+                                <a href="img/photo_hotel3.jpg" target="_blank"><img src="img/photo_hotel3.jpg"></a>
+                                <a href="img/photo_hotel6.jpg" target="_blank"><img src="img/photo_hotel6.jpg"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <footer>
+                <div class="container">
+                    <div class="footer">
+                        <div class="conteneur_logo_footer">
+                            <a href="index.html"><img id="logo_footer" src="img/logo.png"></a>
+                        </div>
+                        <div class="footer_contact_infos">
+                            <span>Tél : 09 81 61 27 26</span>
+                            <span>E-mail : residencelaperle@free.fr</span>
+                        </div>
+                        <div class="footer_copyright">
+                            &copy Tous droits réservés
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+        
+        <script type="text/javascript" src="js/accueil.js"></script>
+
+    </body>
+</html>
